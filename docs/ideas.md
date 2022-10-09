@@ -1,6 +1,6 @@
 **Team Zayin**
 
-**Application Name:** Movie Friend Finder
+**Application Name:** Pop! 
 
 **Team Overview**:
 Vivienne Tam (gitub username: VTam25)
