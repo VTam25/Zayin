@@ -1,0 +1,39 @@
+/* banner css */
+
+.navbar {
+  width: 100%;
+  background-color: #555;
+  overflow: auto;
+}
+
+.navbar a {
+  float: right;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  background-color: grey;
+}
+
+.navbar #logo {
+  float: left;
+}
+
+.active {
+  background-color: #04AA6D;
+}
+
+@media screen and (max-width: 500px) {
+  .navbar a,
+  .navbar #logo {
+    float: none;
+    display: block;
+  }
+}
+
+/* confirmation page css */
+
+/* account setting css */
