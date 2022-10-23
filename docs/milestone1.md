@@ -1,7 +1,7 @@
 # **MILESTONE 0**
 
 
-**Data Interactions**
+## **Data Interactions**
 
 * User can create profile with profile picture and their watch history and their top genres
 * User can add friends and view their friends list
@@ -9,7 +9,7 @@
 * User can favorite movies that they would like to watch within the blended list and view the list again from the friends list
 
 
-**Division of Labor**
+## **Division of Labor**
 
 
 Foram Patel
@@ -31,4 +31,4 @@ Vivienne Tam
 * Movie list page
 
 
-**Wireframe and HTML/CSS Mockups**
+## **Wireframe and HTML/CSS Mockups**
