@@ -1,0 +1,9 @@
+body {
+    display: flex;
+}
+
+.title {
+    margin-left: 10%;
+    margin-top: 10%;
+    width: 100%;
+}
