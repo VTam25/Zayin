@@ -10,12 +10,16 @@ label {
 }
 
 input {
-    width: 75%;
+    width: 90%;
 }
+
+.vr {
+  width: 2%;;
+}
+
 /* Split the screen in half */
 .split {
     height: 100%;
-    width: 50%;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -26,12 +30,18 @@ input {
   /* Control the left side */
   .left {
     margin-top: 1%;
-    margin-left: 1%;
+    margin-left: 5%;
+    width: 60%;
     left: 0;
   }
   
   /* Control the right side */
   .right {
-    margin-right: 1%;
+    margin-right: 5%;
+    width: 30%;
     right: 0;
+  }
+
+  .text {
+    margin-left: 5%;
   }
