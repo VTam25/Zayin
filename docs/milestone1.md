@@ -45,3 +45,4 @@ Vivienne Tam
 ![1666582868393](image/milestone1/1666582868393.png)
 
 ## **HTML/CSS Mockups**
+<img width="1536" alt="login" src="https://user-images.githubusercontent.com/26626021/197444617-88e66d04-097d-4d2f-8e1f-ff754393d79f.png">
