@@ -1,6 +1,12 @@
 body {
     display: flex;
-    justify-content: left;
+}
+
+.main {
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: 100%;
 }
 
 a {
@@ -18,12 +24,6 @@ input {
     margin-left: 1%;
 }
 
-.title {
-    margin-left: 15%;
-    margin-top: 10%;
-    width: 100%;
-}
-
 .list-group-item {
     border: none;
 }
@@ -36,8 +36,8 @@ input {
 
 /* Split the screen in half */
 .split {
-    margin-top: 4.5%;
-    position: fixed;
+    margin-top: 10%;
+    position: relative;
     z-index: 1;
     top: 0;
     overflow-x: hidden;
@@ -45,6 +45,7 @@ input {
   
   /* Control the left side */
   .left {
+    position: absolute;
     margin-left: 5%;
     width: 60%;
     left: 0;
@@ -52,16 +53,16 @@ input {
   
   /* Control the right side */
   .right {
+    position: absolute;
     margin-right: 5%;
-    margin-top: 5%;
     width: 83%;
     right: 0;
   }
 
-.new_friend {
-    position: absolute;
-    bottom: 0;
-    margin-left: 5%;
-    margin-bottom: 2%;
-    width: 100%;
-}
+  .friend_profiles {
+    margin-top: 4%;
+  }
+
+  .new_friend {
+    margin-top: 10%;
+  }
