@@ -41,13 +41,18 @@ Vivienne Tam
 
 ## **HTML/CSS Mockups**
 <img width="1536" alt="login" src="https://user-images.githubusercontent.com/26626021/197444803-cbc1121e-5be8-48be-b9d1-3e4349029d5e.png">
+
+
 ![sign up](https://user-images.githubusercontent.com/26626021/197444874-f362b0de-7f14-4956-9c8d-6037a6424a85.png)
 
 <img width="1536" alt="dashboard" src="https://user-images.githubusercontent.com/26626021/197444922-9c7f71f2-9bec-455e-81e5-4402a82decb8.png">
+
+
 ![Friends List](https://user-images.githubusercontent.com/26626021/197445001-09202773-cdb0-4256-89e7-ea4111756453.png)
 
 
 ![account_settings](https://user-images.githubusercontent.com/26626021/197444961-f5f55a6c-5c8e-447b-bb36-24f15acdf528.png)
+
 
 ![confirmation_page](https://user-images.githubusercontent.com/26626021/197445024-a2e627d8-7d31-40bb-b63e-f4f097bb6de1.png)
 
