@@ -11,12 +11,10 @@
   margin-top: 10%;
 }
 
-.bottom {
-  position: absolute;
-  right: 0;
-  bottom: 0;
+.bottom_btns {
+  margin-top: 30%;
 }
-  
+
 /* Control the left side */
 .left {
   position: absolute;
