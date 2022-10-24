@@ -29,20 +29,15 @@ Vivienne Tam
 * Movie list page
 
 # Wireframe
+<img width="731" alt="image (4)" src="https://user-images.githubusercontent.com/26626021/197445139-b4b67139-7b3a-4424-b4d9-6df7a544864f.png">
+<img width="733" alt="image (5)" src="https://user-images.githubusercontent.com/26626021/197445143-725e0d66-ebe1-45a5-9561-ed7f4bb61712.png">
+<img width="735" alt="image (6)" src="https://user-images.githubusercontent.com/26626021/197445148-b3704433-7fde-415f-99e5-9d72e74ea685.png">
+<img width="731" alt="image (7)" src="https://user-images.githubusercontent.com/26626021/197445154-7e24a705-0645-476a-92fe-979390a575ff.png">
+<img width="738" alt="image (8)" src="https://user-images.githubusercontent.com/26626021/197445162-81dc01b5-65a9-4934-8170-22b96fe83038.png">
+<img width="727" alt="image (9)" src="https://user-images.githubusercontent.com/26626021/197445167-c0cbbd42-3db4-4fc9-b103-308a9264b7f5.png">
+<img width="733" alt="image (10)" src="https://user-images.githubusercontent.com/26626021/197445172-3eb2e5a2-7998-4140-8976-5881c4174fe2.png">
 
-![1666582553540](image/milestone1/1666582553540.png)
 
-![1666582562997](image/milestone1/1666582562997.png)
-
-![1666582826859](image/milestone1/1666582826859.png)
-
-![1666582839389](image/milestone1/1666582839389.png)
-
-![1666582849740](image/milestone1/1666582849740.png)
-
-![1666582858809](image/milestone1/1666582858809.png)
-
-![1666582868393](image/milestone1/1666582868393.png)
 
 ## **HTML/CSS Mockups**
 <img width="1536" alt="login" src="https://user-images.githubusercontent.com/26626021/197444803-cbc1121e-5be8-48be-b9d1-3e4349029d5e.png">
