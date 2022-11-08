@@ -15,12 +15,6 @@
     opacity: .5;
   }
   
-  .profilepic__image {
-    object-fit: cover;
-    opacity: 1;
-    transition: opacity .2s ease-in-out;
-  }
-  
   .change_profile_pic {
     top: 0;
     right: 0;
@@ -33,16 +27,7 @@
     transition: opacity .2s ease-in-out;
   }
   
-  .profilepic__icon {
-    color: white;
-    padding-bottom: 8px;
-  }
-  
-  .fas {
-    font-size: 20px;
-  }
-  
-  .profilepic__text {
+  /* .profilepic__text {
     text-transform: uppercase;
     font-size: 12px;
     width: 50%;
@@ -59,7 +44,7 @@
     transition: background-color .2s ease-in-out;
     border-radius: 100px;
     margin-bottom: 0;
-  }
+  } */
   
   .profile {
     display: grid;
@@ -127,6 +112,19 @@
     font-size: large;
   }
 
-  #file {
+  #picture {
     padding-bottom: 1%;
+  }
+
+  #movie_input,
+  #genre_input {
+    color: white;
+    background-color: rgb(203, 28, 28);
+    border-radius: 5%;
+    border-style: hidden;
+    padding: 5px 15px 5px 15px;
+    width: 20%;
+    margin-left: 35%;
+    display: flex;
+    justify-content: center;
   }
