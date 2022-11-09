@@ -14,6 +14,31 @@ window.movie_data = [
 
 window.genre_data = [];
 
+// Some potential JSON data we could work with 
+// const user_database = {
+//     "example@gmail.com": {
+//         "profile_pic": "",
+//         "password": "somepassword",
+//         "watch_history": ["Gone With The Wind", "The Wizard of Oz", "The Godfather", "The Shawshank Redemption", "Seven Samurai"],
+//         "top genre": ["action", "romance"]
+//     },
+//     "example2@gmail.com": {
+//         "profile_pic": "",
+//         "password": "somepassword",
+//         "watch_history": ["Gone With The Wind", "The Wizard of Oz", "The Godfather", "The Shawshank Redemption", "Seven Samurai"],
+//         "top genre": ["action", "romance"]
+//     },
+// };
+
+// const top_genres = {
+//     "tags": []
+// }
+
+// const movie = {
+//     "name": "",
+//     "genre": ""
+// }
+
 document.getElementById('picture').addEventListener("change", loadFile);
 
 function loadFile(event) {
@@ -38,19 +63,36 @@ document.getElementById('movie_input').addEventListener("click", addMovie);
 
 function addMovie() {
     const watch_history_input = document.getElementById('watch_history').value;
-    const movieList = document.getElementById('movie_list');
-    const theP = document.createElement("p");
-    console.log(watch_history_input);
-    theP.innerHTML = watch_history_input;
-    movieList.appendChild(theP);
+
+    if (watch_history_input.length > 0) {
+        const movieList = document.getElementById('movie_list');
+        const theP = document.createElement("p");
+        console.log(watch_history_input);
+        theP.innerHTML = watch_history_input;
+        movieList.appendChild(theP);
+    };
 }
 
 document.getElementById('genre_input').addEventListener("click", addGenre);
 
 function addGenre() {
     const top_genre_input = document.getElementById('top_genres').value;
-    const genreList = document.getElementById('genre_list');
-    const theP = document.createElement("p");
-    theP.innerHTML = top_genre_input;
-    genreList.appendChild(theP);
+    
+    if (top_genre_input.length > 0) {
+        const genreList = document.getElementById('genre_list');
+        const theP = document.createElement("p");
+        theP.innerHTML = top_genre_input;
+        genreList.appendChild(theP);
+    };
+}
+
+document.getElementById('remove_account_button').addEventListener("click", removeAccount);
+
+function removeAccount(name, response) {
+    if (confirm("Do you sure want to delete this user?")) {
+        // your AJAX CALL HERE
+        // delete user_database[name];
+        // fs.writeFileSync(JSONfile, JSON.stringify(user_database));
+        // response.write("<h1> counter " + name + " deleted </h1>");
+    }
 }

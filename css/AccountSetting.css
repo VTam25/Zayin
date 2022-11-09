@@ -116,6 +116,14 @@
     padding-bottom: 1%;
   }
 
+  #remove_account_button {
+    color: white;
+    background-color: rgb(203, 28, 28);
+    border-radius: 5%;
+    border-style: hidden;
+    padding: 5px 15px 5px 15px;
+  }
+
   #movie_input,
   #genre_input {
     color: white;
