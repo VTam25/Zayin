@@ -52,10 +52,10 @@ function color() {
     const watch_history_input = document.getElementById('watch_history').value;
     if (watch_history_input.length != 0 && movie_data.includes(watch_history_input)) {
         document.getElementById('watch_history').style.color = 'white';
-        document.getElementById('watch_history').style.backgroundColor = 'red';
+        document.getElementById('watch_history').style.backgroundColor = 'white';
     } else {
         document.getElementById('watch_history').style.color = 'black';
-        document.getElementById('watch_history').style.backgroundColor = 'white';
+        document.getElementById('watch_history').style.backgroundColor = 'red';
     }
 }
 
@@ -78,7 +78,7 @@ document.getElementById('genre_input').addEventListener("click", addGenre);
 function addGenre() {
     const top_genre_input = document.getElementById('top_genres').value;
     
-    if (top_genre_input.length > 0) {
+    if (top_genre_input.length > 0 && !movie_data.includes(watch_history_input)) {
         const genreList = document.getElementById('genre_list');
         const theP = document.createElement("p");
         theP.innerHTML = top_genre_input;
