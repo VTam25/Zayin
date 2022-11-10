@@ -31,17 +31,20 @@ function reload(filename) {
 // })
 
 // This responds a DELETE request for the /del_user page.
-app.delete('/del_user/:id', function (req, res) {
+app.delete('/del_user/', function (req, res) {
    console.log("Got a DELETE request for /del_user");
    console.log(req);
-   const { id } = req.params;
-   const user_to_delete = users.find(user => uers.id === id);
-   if (user_to_delete) {
-      users = users.filter(user => user.id !== id);
-      res.status(200).json.json(user_to_delete);
-   } else {
-      res.status(404).json({message: "The user you are looking for does not exist."})
-   }
+   // const { id } = req.params;
+   // const user_to_delete = users.find(user => uers.id === id);
+   // if (user_to_delete) {
+   //    users = users.filter(user => user.id !== id);
+   //    res.status(200).json.json(user_to_delete);
+   // } else {
+   //    res.status(404).json({message: "The user you are looking for does not exist."})
+   // }
+   delete users[req]
+   fs.writeFileSync(JSONfile, JSON.stringify(users));
+   res.write("<h1> user " + req + " deleted </h1>");
    res.send(JSON.stringify(response));
 })
 

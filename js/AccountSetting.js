@@ -86,22 +86,19 @@ function addGenre() {
     };
 }
 
-document.getElementById('remove_account_button').addEventListener("click", async (event) => {
-    if (confirm("Do you sure want to delete this user?")) {
+document.getElementById('remove_account_button').addEventListener("click", async (name, response) => {
+    if (confirm("Are you sure want to delete this user?")) {
         // your AJAX CALL HERE
         // delete user_database[name];
         // fs.writeFileSync(JSONfile, JSON.stringify(user_database));
-        console.log(event);
-        const response = fetch('http://localhost:8000/del_user/1'//,
-        // {
-        //     method: "POST",
-        //     headers: {
-        //         "Content-Type": "application/json"
-        //     },
-        //     body: JSON.stringify({username: "username", password: "password"})
-        // }
-        );
-    
+        // console.log(event);
+        const response = fetch('http://localhost:8000/del_user/?user1', 
+        {
+            method: 'DELETE',
+            headers: {
+                'Content-type': 'application/json'
+            }
+        });
         // location.href = "../html/signup.html";
     };
 });
