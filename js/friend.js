@@ -48,3 +48,10 @@ server.on('request', async (request, response) => {
 });
 reload(JSON.file);
 server.listen(8080);
+
+// document.getElementById('add_btn').addEventListener("click", async (event) => {
+//     console.log("event");
+//     const newFriend = document.getElementById("friend_name").value;
+//     const response = fetch('http://localhost:8000/friends/');
+//     console.log(response);
+// });
