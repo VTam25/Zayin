@@ -78,6 +78,7 @@ We have connected Heroku to our repository, but we had issues with the server an
 https://zayin.herokuapp.com/
 
 
+
 ## **Division of Labor**
 
 Foram Patel
@@ -107,4 +108,3 @@ Vivienne Tam
 * Friends list page
 * Movie list page
 * Added Button Navigation
-
