@@ -1,22 +1,26 @@
 var express = require('express');
 var app = express();
-app.use(express.static('Zayin'));
+const path = require('path');
+// app.use(express.static('Zayin'));
+app.use(express.static('html'));
+
 let fs = require('fs');
 const port = 8000;     // we will listen on this port
 
-let users = [];
-const JSONfile = './users.json';
 
-// MAKE SURE TO CALL THIS FUNCTION SOMEWHERE
-function reload(filename) {
-   if (fs.existsSync(filename)) {
-       // TODO: Read in counter from file
-       const str = fs.readFileSync(JSONfile);
-       users = JSON.parse(str);
-   } else {
-      users = {};
-   }
-}
+
+/*
+movie {}
+*/
+
+app.get('/', (req, res) => {  // when you go to the root, hello!
+  //res.send('Hello World!');
+  app.use(express.static('html'));
+});
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`);
+});
 
 // This responds with "Hello World" on the homepage
 // app.get('/', function (req, res) {
@@ -54,11 +58,9 @@ app.delete('/del_user/', function (req, res) {
 //    res.send('Page Listing');
 // })
 
-var server = app.listen(port, function () {
-   var host = server.address().address
-   var port = server.address().port
+// var server = app.listen(port, function () {
+//    var host = server.address().address;
+//    var port = server.address().port;
    
-   console.log("Example app listening at http://%s:%s", host, port)
-})
-
-reload(JSONfile);
+//    console.log("Example app listening at http://%s:%s", host, port);
+// });
