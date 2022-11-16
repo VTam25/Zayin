@@ -1,0 +1,39 @@
+.horizontal-scrollable > .row {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+  
+.horizontal-scrollable > .row > .col-xs-4 {
+    display: inline-block;
+    float: none;
+
+}
+
+.top-genres {
+    margin-top: 600px;
+    position:absolute;
+}
+
+.col-xs-4 {
+    width: 500;
+    height: 500;
+}
+
+#col-try {
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+    background-color: #df4759;
+    border-radius: 15px;
+}
+
+.spacer-top{
+    padding-top: 40px;
+}
+
+.button-image {
+    background-image: "../images/profilepicture.png";
+    width: 100px;
+    height: 100px;
+
+}
