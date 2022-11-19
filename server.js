@@ -10,11 +10,13 @@ app.use('/', express.static('public/html'));
 
 app.get("/", async function (req, res){
   const client = new MongoClient(uri, { useUnifiedTopology: true });
-
+  console.log("In get");
   try {
     await client.connect();
     const database = client.db('zayin-db');
+    console.log(database.listCollections());
     const collection = database.collection('users');
+    console.log("In try");
 
   }
   catch(err){
