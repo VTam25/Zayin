@@ -12,16 +12,17 @@ User
 
       password_hash: String,
 
-      picture: img,
+      picture: String, //path to img file
 
       genres: List[String],
 
       watch_history: List[String],
 
-      friends: List[String], //user's list of added friends' usernames
-
-      movie_lists: List[Objects] //list of movie lists created with friends, indices should match up with friends list
+      friends: List[Object], //user's list of added friend objects
+      //Friend object is {"f_name": "name", "f_movies": List}
 
     }
 
+
+For the movie data we will be using The Movie Database API.
 
