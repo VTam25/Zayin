@@ -2,7 +2,7 @@ function show_friends() {
     fetch("/friends")
       .then((response) => response.json())
       .then((data) => {
-        console.log(data.friends);
+        console.log(data);
       });
   }
 
