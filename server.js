@@ -4,6 +4,8 @@ app.use(express.static("public"));
 const port = 8000;    
 
 
+const uri = process.env.MONGODB_URI;
+
 app.use('/', express.static('public/html'));
 // app.use(express.static('css'));
 
