@@ -10,8 +10,7 @@ const { MongoClient } = require("mongodb");
 //maybe need to hide this with secrets or get the line below to work
 const uri = process.env.MONGODB_URI;
 
-//only for testing purposes w/o heroku
-app.get("/html/dashboard", async function (req, res){
+app.get("/dashboard", async function (req, res){
   const client = new MongoClient(uri, { useUnifiedTopology: true });
   console.log("In get");
   try {
