@@ -3,12 +3,14 @@ const app = express();
 app.use(express.static("public"));
 const port = 8000;    
 
-const { MongoClient } = require("mongodb");
-const uri = process.env.MONGODB_URI;
-
 app.use('/', express.static('public/html'));
 
-app.get("/", async function (req, res){
+const { MongoClient } = require("mongodb");
+const uri = "mongodb+srv://team:FOQvCBE0VEC81Fbv@zayin-east.79pggjl.mongodb.net/zayin-db?retryWrites=true&w=majority"; 
+//maybe need to hide this with secrets or get the line below to work
+//const uri = process.env.MONGODB_URI;
+
+app.get("/test", async function (req, res){
   const client = new MongoClient(uri, { useUnifiedTopology: true });
   console.log("In get");
   try {
