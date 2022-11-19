@@ -6,25 +6,25 @@ const port = 8000;
 const { MongoClient } = require("mongodb");
 const uri = process.env.MONGODB_URI;
 
-// app.get("/", async function (req, res){
-//   const client = new MongoClient(uri, { useUnifiedTopology: true });
-
-//   try {
-//     await client.connect();
-//     const database = client.db('zayin-db');
-//     const collection = database.collection('users');
-
-//   }
-//   catch(err){
-//     console.log(err);
-//   }
-//   finally{
-//     await client.close();
-//   }
-// });
-
-
 app.use('/', express.static('public/html'));
+
+app.get("/", async function (req, res){
+  const client = new MongoClient(uri, { useUnifiedTopology: true });
+
+  try {
+    await client.connect();
+    const database = client.db('zayin-db');
+    const collection = database.collection('users');
+
+  }
+  catch(err){
+    console.log(err);
+  }
+  finally{
+    await client.close();
+  }
+});
+
 
 // app.use(express.static('css'));
 
