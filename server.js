@@ -25,8 +25,8 @@ MongoClient.connect(uri, { useUnifiedTopology: true })
   }).catch(console.error);
 
 app.get("/friends", async function (req, res){
-  console.log("frieeenddd");
-  const user = await collection.find({"username": "Viv"}).toArray();
+  curr_user = "Viv"; //temporary, delete later 
+  const user = await collection.find({"username": `${curr_user}`}).toArray();
   return res.json(user);
 });
 
@@ -64,4 +64,3 @@ app.post('/signup', async function (req, res){
 app.listen(process.env.PORT || port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
-
