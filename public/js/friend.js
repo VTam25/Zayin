@@ -22,7 +22,7 @@ function show_friends() {
           newDiv.appendChild(pic);
 
           const link = document.createElement("a");
-          link.href = "somewhere";
+          link.href = "../html/movie.html";
           link.innerHTML = entry.f_name;
           newDiv.appendChild(link);
 
