@@ -25,6 +25,7 @@ app.use('/', express.static('public/html'));
 //  res.send(JSON.stringify(response));
 // });
 
+export const user = "";
 app.listen(process.env.PORT || port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
