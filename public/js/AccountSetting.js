@@ -1,11 +1,45 @@
 // user watch history
-let watch_history_data;
+let watch_history_data = [];
+// user top genre
+let top_genres_data = [];
 
 fetch("/accountsetting")
     .then((response) => response.json())
     .then((data) => {
-        console.log(data[0]['watch_history']);
-        watch_history_data = data[0]['watch_history'];
+        console.log(data);
+        // check if there is any existing user in our database
+        if (data.length > 0) {
+            // try to get the first user information in our database
+            if ("watch_history" in data[0]) {
+                // console.log(data[0]['watch_history']);
+                watch_history_data = data[0]['watch_history'];
+            }
+
+            if ("genres" in data[0]) {
+                top_genres_data = data[0]['genres'];
+            }
+        }
+
+        console.log(watch_history_data);
+        console.log(top_genres_data);
+
+        // load existing watch history data on user's database to the webpage
+        for (let i = 0; i < watch_history_data.length; i++) {
+            const movieList = document.getElementById('movie_list');
+            const theP = document.createElement("p");
+            const movie = watch_history_data[i];
+            theP.innerHTML = movie;
+            movieList.appendChild(theP);
+        }
+
+        // load existing top genres data on user's database to the webpage
+        for (let i = 0; i < top_genres_data.length; i++) {
+            const genreList = document.getElementById('genre_list');
+            const theP = document.createElement("p");
+            const genre = top_genres_data[i];
+            theP.innerHTML = genre;
+            genreList.appendChild(theP);
+        }
     });
 
 document.getElementById('picture').addEventListener("change", loadFile);
@@ -44,15 +78,11 @@ function addMovie() {
         fetch('/watchHistory/save', {
             method: 'put',
             headers: { 'Content-Type': 'application/json' },
-            // body: JSON.stringify({
-            //   name: 'Darth Vader',
-            //   quote: 'I find your lack of faith disturbing.'
-            // })
             body: JSON.stringify({
                 watch_history: watch_history_data
             })
         })
-    };
+    }
 
     console.log(JSON.stringify({ watch_history: watch_history_data }));
 
@@ -65,13 +95,13 @@ function addMovie() {
     // });
 
     // get updated user watch history list
-    // fetch("/accountsetting")
-    //     .then((response) => response.json())
-    //     .then((data) => {
-    //         console.log(data[0]['watch_history']);
-    //         watch_history_data = data[0]['watch_history'];
-    //     });
+    fetch("/accountsetting")
+        .then((response) => response.json())
+        .then((data) => {
+            watch_history_data = data[0]['watch_history'];
+        });
 
+    console.log(watch_history_data);
 }
 
 document.getElementById('genre_input').addEventListener("click", addGenre);
@@ -79,12 +109,28 @@ document.getElementById('genre_input').addEventListener("click", addGenre);
 function addGenre() {
     const top_genre_input = document.getElementById('top_genres').value;
 
-    if (top_genre_input.length > 0) {
+    if (top_genre_input.length > 0 && !top_genres_data.includes(top_genre_input)) {
         const genreList = document.getElementById('genre_list');
         const theP = document.createElement("p");
         theP.innerHTML = top_genre_input;
         genreList.appendChild(theP);
+        top_genres_data.push(top_genre_input);
+
+        fetch('/topGenres/save', {
+            method: 'put',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                genre: top_genres_data
+            })
+        })
     };
+
+    // get updated user top genre list
+    fetch("/accountsetting")
+        .then((response) => response.json())
+        .then((data) => {
+            top_genres_data = data[0]['genres'];
+        });
 }
 
 document.getElementById('remove_account_button').addEventListener("click", async (name, response) => {

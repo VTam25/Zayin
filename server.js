@@ -94,12 +94,15 @@ app.put('/watchHistory/save', async (req, res) => {
         $set: {
           watch_history: req.body.watch_history,
         }
+      },
+      {
+        upsert: true
       }
     )
 
     const user = await collection.find({ "username": "Viv" }).toArray();
     return res.json(user);
-    
+
   } catch (err) {
     console.log(err);
   }
@@ -120,6 +123,40 @@ app.put('/watchHistory/save', async (req, res) => {
   //     console.log(result);
   //   })
   //   .catch(error => console.error(error))
+});
+
+app.put('/topGenres/save', async (req, res) => {
+  console.log(req.body);
+  const client = new MongoClient(uri, { useUnifiedTopology: true });
+
+  try {
+    await client.connect();
+
+    const database = client.db('zayin-db');
+    const collection = database.collection('users');
+
+    collection.findOneAndUpdate(
+      { username: 'Viv' },
+      {
+        $set: {
+          genres: req.body.genre,
+        }
+      },
+      {
+        upsert: true
+      }
+    )
+
+    const user = await collection.find({ "username": "Viv" }).toArray();
+    return res.json(user);
+
+  } catch (err) {
+    console.log(err);
+  }
+  finally {
+    // Ensures that the client will close when you finish/error
+    await client.close();
+  }
 })
 
 app.get("/confirmationpage", async function (req, res) {
