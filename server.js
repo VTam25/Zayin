@@ -40,6 +40,9 @@ app.post('/signup', async function (req, res){
   res.redirect('/AccountSetting.html');
 })
 
+app.post('/login', async function (req, res){
+  res.redirect('/dashboard.html');
+})
 // app.use(express.static('css'));
 
 // app.get('/login/', (req, res) => {  
@@ -61,11 +64,6 @@ app.post('/signup', async function (req, res){
 // });
 
 
-export const user = "";
-
-
-
 app.listen(process.env.PORT || port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
-
