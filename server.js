@@ -11,9 +11,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/', express.static('public/html'));
 
 const { MongoClient } = require("mongodb");
-const uri = "mongodb+srv://team:FOQvCBE0VEC81Fbv@zayin-east.79pggjl.mongodb.net/zayin-db?retryWrites=true&w=majority"; 
+//const uri = "mongodb+srv://team:FOQvCBE0VEC81Fbv@zayin-east.79pggjl.mongodb.net/zayin-db?retryWrites=true&w=majority"; 
 //maybe need to hide this with secrets or get the line below to work
-//const uri = process.env.MONGODB_URI;
+const uri = process.env.MONGODB_URI;
 let database = "";
 let collection = "";
 
@@ -24,9 +24,30 @@ MongoClient.connect(uri, { useUnifiedTopology: true })
     collection = database.collection('users');
   }).catch(console.error);
 
+app.put("/friends", async function (req, res){
+  console.log("In friends put");
+  console.log(req.body);
+  curr_user = "Viv"; //temporary, delete later 
+  collection.findOneAndUpdate(
+    {username: curr_user},
+    {
+     $push: {
+      friends : {"f_name": req.body.f_name, "f_movies": ""}
+     }
+    },
+    {
+      upsert: false
+    }
+    ).then(result => {
+      console.log(result);
+      res.json("Success");
+    }).catch(error => console.error(error));
+});
+
 app.get("/friends", async function (req, res){
-  console.log("frieeenddd");
-  const user = await collection.find({"username": "Viv"}).toArray();
+  console.log("In friends get");
+  curr_user = "Viv"; //temporary, delete later 
+  const user = await collection.find({"username": `${curr_user}`}).toArray();
   return res.json(user);
 });
 
@@ -39,6 +60,7 @@ app.post('/signup', async function (req, res){
   }).catch(error => console.error(error));
   res.redirect('/AccountSetting.html');
 })
+
 
 // app.use(express.static('css'));
 
@@ -64,4 +86,3 @@ app.post('/signup', async function (req, res){
 app.listen(process.env.PORT || port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
-
