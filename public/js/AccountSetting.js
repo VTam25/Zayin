@@ -1,3 +1,5 @@
+// user's username
+let curr_user = "";
 // user watch history
 let watch_history_data = [];
 // user top genre
@@ -10,6 +12,11 @@ fetch("/accountsetting")
         // check if there is any existing user in our database
         if (data.length > 0) {
             // try to get the first user information in our database
+            if ("username" in data[0]) {
+                // console.log(data[0]['watch_history']);
+                curr_user = data[0]['username'];
+            }
+
             if ("watch_history" in data[0]) {
                 // console.log(data[0]['watch_history']);
                 watch_history_data = data[0]['watch_history'];
@@ -139,6 +146,17 @@ document.getElementById('remove_account_button').addEventListener("click", async
         //             'Content-type': 'application/json'
         //         }
         //     });
+
+        fetch('/user/delete', {
+            method: 'delete',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                name: curr_user
+            })
+        })
+            .then(res => {
+                if (res.ok) return res.json()
+            })
 
         location.href = "../html/signup.html";
     };

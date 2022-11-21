@@ -5,7 +5,7 @@ const port = 8000;
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
-let curr_user = "";
+let curr_user = "someUser";
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -32,14 +32,14 @@ app.get("/friends", async function (req, res) {
 });
 
 app.get("/accountsetting", async function (req, res) {
-  curr_user = "Viv"; //temporary, delete later 
+  // curr_user = "Viv"; //temporary, delete later 
   const user = await collection.find({ "username": `${curr_user}` }).toArray();
   return res.json(user);
 });
 
 app.put('/watchHistory/save', async (req, res) => {
   collection.findOneAndUpdate(
-    { username: 'Viv' },
+    { username: curr_user },
     {
       $set: {
         watch_history: req.body.watch_history,
@@ -49,14 +49,14 @@ app.put('/watchHistory/save', async (req, res) => {
       upsert: true
     }
   )
-  curr_user = "Viv"; //temporary, delete later 
-  const user = await collection.find({ "username": "Viv" }).toArray();
+  // curr_user = "Viv"; //temporary, delete later 
+  const user = await collection.find({ "username": `${curr_user}` }).toArray();
   return res.json(user);
 });
 
 app.put('/topGenres/save', async (req, res) => {
   collection.findOneAndUpdate(
-    { username: 'Viv' },
+    { username: curr_user },
     {
       $set: {
         genres: req.body.genre,
@@ -67,10 +67,22 @@ app.put('/topGenres/save', async (req, res) => {
     }
   )
   curr_user = "Viv"; //temporary, delete later 
-  const user = await collection.find({ "username": "Viv" }).toArray();
+  const user = await collection.find({ "username": `${curr_user}` }).toArray();
   return res.json(user);
 });
 
+app.delete('/user/delete', (req, res) => {
+  // Handle delete event here
+  console.log(req.body.name);
+
+  collection.deleteOne(
+    { username: req.body.name }
+  )
+  .then(result => {
+    res.json(`Deleted ${req.body.name}`)
+  })
+  .catch(error => console.error(error))
+});
 
 // app.use(express.static('css'));
 
