@@ -1,9 +1,10 @@
 //import user from './server.js'
 
 document.getElementById('submit').addEventListener("click", async (event) => {
-    console.log("event");
-    console.log(document.getElementById('uname'));
-    curr_user = document.getElementById('uname').value;
+//     console.log("event");
+//     console.log(document.getElementById('uname'));
+//     curr_user = document.getElementById('uname').value;
+    location.href = "../html/dashboard.html"
 
     //fetch("/login")
     // .then((response) => response.json())
