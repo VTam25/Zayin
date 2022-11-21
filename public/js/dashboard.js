@@ -1,13 +1,13 @@
 document.getElementById("pick-friend1").addEventListener("click", (event) => 
-    location.href = "../html/movie.html"
+    location.href = "../html/ConfirmationPage.html"
 );
 
 document.getElementById("pick-friend2").addEventListener("click", (event) => 
-    location.href = "../html/movie.html"
+    location.href = "../html/ConfirmationPage.html"
 );
 
 document.getElementById("pick-friend3").addEventListener("click", (event) => 
-    location.href = "../html/movie.html"
+    location.href = "../html/ConfirmationPage.html"
 );
 
 
