@@ -61,6 +61,9 @@ app.post('/signup', async function (req, res){
   res.redirect('/AccountSetting.html');
 })
 
+app.post('/login', async function (req, res){
+  res.redirect('/dashboard.html');
+})
 
 // app.use(express.static('css'));
 

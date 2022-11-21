@@ -1,19 +1,34 @@
+//import user from './server.js'
 
 document.getElementById('submit').addEventListener("click", async (event) => {
     console.log("event");
-    const response = fetch('http://localhost:8000/login/'//,
-    // {
-    //     method: "POST",
-    //     headers: {
-    //         "Content-Type": "application/json"
-    //     },
-    //     body: JSON.stringify({username: "username", password: "password"})
-    // }
-    )
+    console.log(document.getElementById('uname'));
+    curr_user = document.getElementById('uname').value;
 
-    location.href = "../html/dashboard.html";
+    fetch("/login")
+    // .then((response) => response.json())
+    // .then((data) => {
+    //     if (data[0].password === document.getElementById('pass').value) {
+           // location.href = "../html/dashboard.html";
+    //     }
+
+    //     else {
+    //         window.alert("Incorrect Password");
+    //         document.getElementById('uname').value;
+    //         document.getElementById('pass').value;
+    //     }
+    // });
+
+
+    
+
+
+
+
 
 });
+
+//document.getElementById('profile_pic')= fetch(url for get request to update the profile picture)
 
 
 document.getElementById('sign-up').addEventListener("click", (event) => 
