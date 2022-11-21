@@ -78,6 +78,7 @@ app.delete('/user/delete', (req, res) => {
     res.json(`Deleted ${req.body.name}`)
   })
   .catch(error => console.error(error))
+});
 
 app.put("/friends", async function (req, res){
   console.log("In friends put");
@@ -119,11 +120,9 @@ app.post('/signup', async function (req, res){
 
 app.post('/', async function (req, res){
   res.redirect('/dashboard.html');
-})
-
-
+});
 
 
 app.listen(process.env.PORT || port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+  console.log(`Example app listening at http://localhost:${port}`); 
 });
