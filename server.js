@@ -6,11 +6,13 @@ const port = 8000;
 
 let curr_user = "";
 
+
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/', express.static('public/html'));
 
 const { MongoClient } = require("mongodb");
+
 //const uri = "mongodb+srv://team:FOQvCBE0VEC81Fbv@zayin-east.79pggjl.mongodb.net/zayin-db?retryWrites=true&w=majority"; 
 //maybe need to hide this with secrets or get the line below to work
 const uri = process.env.MONGODB_URI;
@@ -23,6 +25,59 @@ MongoClient.connect(uri, { useUnifiedTopology: true })
     database = client.db('zayin-db');
     collection = database.collection('users');
   }).catch(console.error);
+  
+  
+  app.get("/accountsetting", async function (req, res) {
+  // curr_user = "Viv"; //temporary, delete later 
+  const user = await collection.find({ "username": `${curr_user}` }).toArray();
+  return res.json(user);
+});
+
+app.put('/watchHistory/save', async (req, res) => {
+  collection.findOneAndUpdate(
+    { username: curr_user },
+    {
+      $set: {
+        watch_history: req.body.watch_history,
+      }
+    },
+    {
+      upsert: true
+    }
+  )
+  // curr_user = "Viv"; //temporary, delete later 
+  const user = await collection.find({ "username": `${curr_user}` }).toArray();
+  return res.json(user);
+});
+
+app.put('/topGenres/save', async (req, res) => {
+  collection.findOneAndUpdate(
+    { username: curr_user },
+    {
+      $set: {
+        genres: req.body.genre,
+      }
+    },
+    {
+      upsert: true
+    }
+  )
+  curr_user = "Viv"; //temporary, delete later 
+  const user = await collection.find({ "username": `${curr_user}` }).toArray();
+  return res.json(user);
+});
+
+app.delete('/user/delete', (req, res) => {
+  // Handle delete event here
+  console.log(req.body.name);
+
+  collection.deleteOne(
+    { username: req.body.name }
+  )
+  .then(result => {
+    res.json(`Deleted ${req.body.name}`)
+  })
+  .catch(error => console.error(error))
 
 app.put("/friends", async function (req, res){
   console.log("In friends put");
@@ -49,6 +104,7 @@ app.get("/friends", async function (req, res){
   curr_user = "Viv"; //temporary, delete later 
   const user = await collection.find({"username": `${curr_user}`}).toArray();
   return res.json(user);
+
 });
 
 app.post('/signup', async function (req, res){
@@ -65,25 +121,7 @@ app.post('/', async function (req, res){
   res.redirect('/dashboard.html');
 })
 
-// app.use(express.static('css'));
 
-// app.get('/login/', (req, res) => {  
-//   response = {
-//     first_name: req.query.first_name,
-//     last_name: req.query.last_name
-//  };
-//  console.log(response);
-//  res.send(JSON.stringify(response));
-// });
-
-// app.post('/login/', (req, res) => {  
-//   response = {
-//     first_name:req.query.username,
-//     last_name:req.query.password
-//  };
-//  console.log(response);
-//  res.send(JSON.stringify(response));
-// });
 
 
 app.listen(process.env.PORT || port, () => {
