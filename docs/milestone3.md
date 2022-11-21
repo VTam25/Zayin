@@ -1,6 +1,6 @@
 # MILESTONE 3 #
 
-## Database Documentation ##
+## Part 1: Database implementation ##
 
 We will have two databases to work with, one for all user data and one for the movie data. For user data, we will be using MongoDB.
 
@@ -26,3 +26,7 @@ User
 
 For the movie data we will be using The Movie Database API.
 
+## Part 2: Back-end Functionality ##
+## Part 3: Deployment ##
+
+https://zayin.herokuapp.com/
