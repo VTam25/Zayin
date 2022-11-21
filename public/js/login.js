@@ -5,7 +5,7 @@ document.getElementById('submit').addEventListener("click", async (event) => {
     console.log(document.getElementById('uname'));
     curr_user = document.getElementById('uname').value;
 
-    fetch("/login")
+    //fetch("/login")
     // .then((response) => response.json())
     // .then((data) => {
     //     if (data[0].password === document.getElementById('pass').value) {
