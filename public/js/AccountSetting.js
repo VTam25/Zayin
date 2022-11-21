@@ -86,14 +86,6 @@ function addMovie() {
 
     console.log(JSON.stringify({ watch_history: watch_history_data }));
 
-    // fetch('/accountsetting', {
-    //     method: 'put',
-    //     headers: { 'Content-Type': 'application/json' },
-    //     body: JSON.stringify({
-    //         watch_history: watch_history_data
-    //     })
-    // });
-
     // get updated user watch history list
     fetch("/accountsetting")
         .then((response) => response.json())
@@ -139,13 +131,15 @@ document.getElementById('remove_account_button').addEventListener("click", async
         // delete user_database[name];
         // fs.writeFileSync(JSONfile, JSON.stringify(user_database));
         // console.log(event);
-        const response = fetch('http://localhost:8000/del_user/?user1',
-            {
-                method: 'DELETE',
-                headers: {
-                    'Content-type': 'application/json'
-                }
-            });
-        // location.href = "../html/signup.html";
+
+        // const response = fetch('http://localhost:8000/del_user/?user1',
+        //     {
+        //         method: 'DELETE',
+        //         headers: {
+        //             'Content-type': 'application/json'
+        //         }
+        //     });
+
+        location.href = "../html/signup.html";
     };
 });
