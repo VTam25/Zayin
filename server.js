@@ -14,9 +14,9 @@ app.use('/', express.static('public/html'));
 
 const { MongoClient } = require("mongodb");
 
-const uri = "mongodb+srv://team:FOQvCBE0VEC81Fbv@zayin-east.79pggjl.mongodb.net/zayin-db?retryWrites=true&w=majority"; 
+//const uri = "mongodb+srv://team:FOQvCBE0VEC81Fbv@zayin-east.79pggjl.mongodb.net/zayin-db?retryWrites=true&w=majority"; 
 //maybe need to hide this with secrets or get the line below to work
-//const uri = process.env.MONGODB_URI;
+const uri = process.env.MONGODB_URI;
 let database = "";
 let collection = "";
 
