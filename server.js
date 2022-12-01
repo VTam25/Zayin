@@ -5,7 +5,7 @@ const port = 8000;
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
-let curr_user = "someUser";
+let curr_user = "";
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -33,6 +33,7 @@ app.get("/friends", async function (req, res) {
 
 app.get("/accountsetting", async function (req, res) {
   // curr_user = "Viv"; //temporary, delete later 
+  curr_user = "someUser"
   const user = await collection.find({ "username": `${curr_user}` }).toArray();
   return res.json(user);
 });
