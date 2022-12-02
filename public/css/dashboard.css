@@ -1,9 +1,10 @@
 .main {
-    position: relative;
+    position: absolute;
     top: 0;
     width: 100%;
     height: 100%;
     margin-left: 2%;
+    margin-top: 12%
 }
 
 .horizontal-scrollable > .row {
@@ -18,10 +19,17 @@
 }
 
 .welcome {
-    margin-top: 10%
-}
+    /* position: relative;
+    margin-top: 0%; */
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+} 
+
 .top-genres {
-    margin-top: 5%; 
+    margin-top:8%; 
     position:absolute;
 }
 
