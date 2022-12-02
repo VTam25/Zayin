@@ -1,12 +1,3 @@
-.main {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    margin-left: 2%;
-    margin-top: 12%
-}
-
 .horizontal-scrollable > .row {
     overflow-x: auto;
     white-space: nowrap;
@@ -18,28 +9,9 @@
 
 }
 
-.welcome {
-    /* position: relative;
-    margin-top: 0%; */
-    position: relative;
-    top: 0;
-    width: 100%;
-    height: 100%;
-
-} 
-
 .top-genres {
-    margin-top:8%; 
+    margin-top: 600px;
     position:absolute;
-}
-
-.recently-watched {
-    margin-top: 25%;
-}
-
-.watch-with-friend {
-    margin-top: 5%;
-    margin-bottom: 15%;
 }
 
 .col-xs-4 {
@@ -64,13 +36,4 @@
     width: 100px;
     height: 100px;
 
-}
-
-.list {
-    width: 250%;
-    margin-top: 2%;
-    padding: 1%; 
-    border-bottom: solid red;
-    margin-left: 5%;
-    
 }
