@@ -2,10 +2,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express(); 
 app.use(express.static("public"));
-const port = 8000;   
+app.use(bodyParser.json());
+const port = 8000; 
 
 let curr_user = "";
-
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -13,9 +13,9 @@ app.use('/', express.static('public/html'));
 
 const { MongoClient } = require("mongodb");
 
-//const uri = "mongodb+srv://team:FOQvCBE0VEC81Fbv@zayin-east.79pggjl.mongodb.net/zayin-db?retryWrites=true&w=majority"; 
-//maybe need to hide this with secrets or get the line below to work
-const uri = process.env.MONGODB_URI;
+const uri = "mongodb+srv://team:FOQvCBE0VEC81Fbv@zayin-east.79pggjl.mongodb.net/zayin-db?retryWrites=true&w=majority"; 
+// maybe need to hide this with secrets or get the line below to work
+// const uri = process.env.MONGODB_URI;
 let database = "";
 let collection = "";
 
@@ -28,13 +28,16 @@ MongoClient.connect(uri, { useUnifiedTopology: true })
   
   
   app.get("/accountsetting", async function (req, res) {
-  // curr_user = "Viv"; //temporary, delete later 
-  curr_user = "someUser"
+  curr_user = "tester"; //temporary, delete later 
   const user = await collection.find({ "username": `${curr_user}` }).toArray();
+  // console.log(user);
   return res.json(user);
 });
 
 app.put('/watchHistory/save', async (req, res) => {
+  curr_user = "tester"; //temporary, delete later 
+  console.log(req.body);
+  console.log(req.body.watch_history);
   collection.findOneAndUpdate(
     { username: curr_user },
     {
@@ -46,12 +49,12 @@ app.put('/watchHistory/save', async (req, res) => {
       upsert: true
     }
   )
-  // curr_user = "Viv"; //temporary, delete later 
   const user = await collection.find({ "username": `${curr_user}` }).toArray();
   return res.json(user);
 });
 
 app.put('/topGenres/save', async (req, res) => {
+  curr_user = "tester"; //temporary, delete later 
   collection.findOneAndUpdate(
     { username: curr_user },
     {
@@ -63,7 +66,24 @@ app.put('/topGenres/save', async (req, res) => {
       upsert: true
     }
   )
-  curr_user = "Viv"; //temporary, delete later 
+  const user = await collection.find({ "username": `${curr_user}` }).toArray();
+  return res.json(user);
+});
+
+app.put('profilePicture/save', async (req, res) => {
+  curr_user = "tester";
+  console.log(req.body.picture);
+  collection.findOneAndUpdate(
+    {username, curr_user},
+    {
+      $set: {
+        picture: req.body.picture
+      }
+    },
+    {
+      upsert: true
+    }
+  )
   const user = await collection.find({ "username": `${curr_user}` }).toArray();
   return res.json(user);
 });
@@ -84,7 +104,7 @@ app.delete('/user/delete', (req, res) => {
 app.put("/friends", async function (req, res){
   console.log("In friends put");
   console.log(req.body);
-  curr_user = "Viv"; //temporary, delete later 
+  curr_user = "tester"; //temporary, delete later 
   collection.findOneAndUpdate(
     {username: curr_user},
     {
@@ -103,7 +123,7 @@ app.put("/friends", async function (req, res){
 
 app.get("/friends", async function (req, res){
   console.log("In friends get");
-  curr_user = "Viv"; //temporary, delete later 
+  curr_user = "tester"; //temporary, delete later 
   const user = await collection.find({"username": `${curr_user}`}).toArray();
   return res.json(user);
 
