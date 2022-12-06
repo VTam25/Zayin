@@ -1,21 +1,31 @@
-const express = require('express'); 
-const bodyParser = require('body-parser');
+import express from 'express';
+import bodyParser from 'body-parser';
+import { MongoClient } from 'mongodb';
+import { MiniCrypt } from './miniCrypt.js';
+
+// const express = require('express'); 
+// const bodyParser = require('body-parser');
+
 const app = express(); 
 app.use(express.static("public"));
 const port = 8000;   
 
 let curr_user = "";
 
-
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/', express.static('public/html'));
 
-const { MongoClient } = require("mongodb");
+// const { MongoClient } = require("mongodb");
 
-//const uri = "mongodb+srv://team:FOQvCBE0VEC81Fbv@zayin-east.79pggjl.mongodb.net/zayin-db?retryWrites=true&w=majority"; 
-//maybe need to hide this with secrets or get the line below to work
-const uri = process.env.MONGODB_URI;
+// const MC = require('./miniCrypt');
+const mc = new MiniCrypt();
+
+//ONLY FOR LOCAL TESTING, DELETE FOR FINAL
+const uri = "mongodb+srv://team:FOQvCBE0VEC81Fbv@zayin-east.79pggjl.mongodb.net/zayin-db?retryWrites=true&w=majority"; 
+
+//SHOULD UNCOMMENT IN MAIN WHICH IS DEPLOYED TO HEROKU
+//const uri = process.env.MONGODB_URI;
 let database = "";
 let collection = "";
 
@@ -110,9 +120,9 @@ app.get("/friends", async function (req, res){
 
 app.post('/signup', async function (req, res){
   console.log(req.body);
-  collection.insertOne(req.body).then(result => {
+  const [salt, hash] = mc.hash(req.body.password_hash);
+  collection.insertOne({"username": req.body.username, "password_hash": hash, "salt": salt}).then(result => {
     console.log(result);
-    console.log(req.body.username);
     curr_user = req.body.username;
   }).catch(error => console.error(error));
   res.redirect('/AccountSetting.html');
