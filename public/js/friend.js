@@ -43,11 +43,17 @@ function show_friends() {
     const friend_name = document.getElementById("friend_name").value;
     console.log("in event");
     console.log(friend_name);
-    fetch('/friends', {
+    fetch('/friends/add', {
       method: 'put',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        f_name: friend_name
+        f_name: friend_name,
+        f_movies: "[]"
       })
+      }).then(res => {
+        if (res.ok){
+          return res.json();
+        }
       })
+      update.location.href = "../html/friends.html";
     });

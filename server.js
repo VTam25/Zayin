@@ -13,6 +13,7 @@ const port = 8000;
 let curr_user = "";
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 app.use('/', express.static('public/html'));
 
@@ -90,29 +91,26 @@ app.delete('/user/delete', (req, res) => {
   .catch(error => console.error(error))
 });
 
-app.put("/friends", async function (req, res){
-  console.log("In friends put");
+app.put("/friends/add", async function (req, res){
+  console.log("In friends add");
   console.log(req.body);
-  curr_user = "Viv"; //temporary, delete later 
   collection.findOneAndUpdate(
     {username: curr_user},
     {
      $push: {
-      friends : {"f_name": req.body.f_name, "f_movies": ""}
+      friends : {"f_name": req.body.f_name, "f_movies": "[]"}
      }
     },
     {
-      upsert: false
+      upsert: true
     }
     ).then(result => {
       console.log(result);
-      res.json("Success");
     }).catch(error => console.error(error));
 });
 
 app.get("/friends", async function (req, res){
   console.log("In friends get");
-  curr_user = "Viv"; //temporary, delete later 
   const user = await collection.find({"username": `${curr_user}`}).toArray();
   return res.json(user);
 
