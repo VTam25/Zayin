@@ -34,11 +34,12 @@
 }
 
 .recently-watched {
-    margin-top: 25%;
+    margin-top: 30%;
+    position:absolute;
 }
 
 .watch-with-friend {
-    margin-top: 5%;
+    margin-top: 50%;
     margin-bottom: 15%;
 }
 
@@ -67,7 +68,7 @@
 }
 
 .list {
-    width: 250%;
+    width: 500px;
     margin-top: 2%;
     padding: 1%; 
     border-bottom: solid red;
