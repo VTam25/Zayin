@@ -10,11 +10,8 @@ document.getElementById("pick-friend3").addEventListener("click", (event) =>
     location.href = "../html/ConfirmationPage.html"
 );
 
-
-
-
-function show_top_genres() {
-    fetch("/top-genres")
+function update_dashboard() {
+    fetch("/update_dashboard")
     .then((response) => response.json())
     .then((data) => {
 
@@ -65,66 +62,5 @@ function show_top_genres() {
     })
 }
 
+window.onload = update_dashboard();
 
-function show_friends_list() {
-    fetch("/friends")
-    .then((response) => response.json())
-    .then((data) => {
-        const friends_arr = data[0].friends;
-
-        let i = 10;
-        console.log("friend" + i.toString());
-
-       for (let i = 1; i <= friends_arr.length; i++) {
-            //const id = "pick-friend" + i.toString();
-            let id = "pick-friend" + i.toString();
-            console.log(id);
-            const friend = document.getElementById(id);
-            friend.innerHTML = friends_arr[i - 1].f_name;
-
-
-            // const friend2 = document.getElementById('pick-friend1');
-            // friend.innerHTML = friends_arr[0].f_name;
-
-
-            // const friend = document.getElementById('pick-friend1');
-            // friend.innerHTML = friends_arr[0].f_name;
-
-        
-            //console.log(friends_arr[i].f_name);
-            //friend.innerHTML=friends_arr[i].f_name;
-            // const theP = document.createElement('p');
-            // const text = document.createTextNode(friends_arr[i].f_name);
-        }
-        // const friend1 = document.getElementById('pick-friend1');
-        // const friend2 = document.getElementById('pick-friend1');
-        // const friend3 = document.getElementById('pick-friend1');
-
-
-
-        // for (let i = 0; i < friends_arr.length; i++) {
-        //     friends_arr[0].f_name =
-        // }
-
-        // console.log(friends)
-        
-    })
-    
-}
-
-function show_recently_watched() {
-    fetch("/watch-history")
-    .then((response) => response.json())
-    .then((data) => {
-        const history = data[0].watch_history
-        console.log("inside watch history");
-        for (let i = 1; i <= data.length; i++) {
-            console.log(data[i]);
-        }
-
-    });
-}
-
-window.onload = show_top_genres();
-// window.onload = show_friends_list();
-// window.onload = show_recently_watched();
