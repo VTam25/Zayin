@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import { MongoClient } from 'mongodb';
 import { MiniCrypt } from './miniCrypt.js';
+import MovieDB from 'node-themoviedb';
 
 // const express = require('express'); 
 // const bodyParser = require('body-parser');
@@ -29,6 +30,8 @@ const uri = "mongodb+srv://team:FOQvCBE0VEC81Fbv@zayin-east.79pggjl.mongodb.net/
 //const uri = process.env.MONGODB_URI;
 let database = "";
 let collection = "";
+
+const mdb = new MovieDB("2689ce531204fb32c1a0ca82f46d0191");
 
 MongoClient.connect(uri, { useUnifiedTopology: true })
   .then(client => {

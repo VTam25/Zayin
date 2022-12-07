@@ -1,14 +1,17 @@
-document.getElementById("pick-friend1").addEventListener("click", (event) => 
-    location.href = "../html/ConfirmationPage.html"
-);
+document.getElementById("pick-friend1").addEventListener("click", (event) => {
+    location.href = "ConfirmationPage.html";
+    window.sessionStorage.setItem("movie_friend", "Lizzie");  
+});
 
-document.getElementById("pick-friend2").addEventListener("click", (event) => 
-    location.href = "../html/ConfirmationPage.html"
-);
+document.getElementById("pick-friend2").addEventListener("click", (event) => {
+    location.href = "ConfirmationPage.html";
+    window.sessionStorage.setItem("movie_friend", "Lizzie");  
+});
 
-document.getElementById("pick-friend3").addEventListener("click", (event) => 
-    location.href = "../html/ConfirmationPage.html"
-);
+document.getElementById("pick-friend3").addEventListener("click", (event) => {
+    location.href = "ConfirmationPage.html";
+    window.sessionStorage.setItem("movie_friend", "Lizzie");  
+});
 
 
 
