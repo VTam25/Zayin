@@ -8,6 +8,7 @@ const guide = {
     "Horror": 27
 };
 
+
 document.getElementById("selected").addEventListener("change", () => {
     let selected_genre = document.getElementById("selected").value;
     document.getElementById("genre_name").innerHTML = selected_genre;
