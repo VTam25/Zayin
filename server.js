@@ -24,10 +24,10 @@ app.use('/', express.static('public/html'));
 const mc = new MiniCrypt();
 
 //ONLY FOR LOCAL TESTING, DELETE FOR FINAL
-//const uri = "mongodb+srv://team:FOQvCBE0VEC81Fbv@zayin-east.79pggjl.mongodb.net/zayin-db?retryWrites=true&w=majority"; 
+const uri = "mongodb+srv://team:FOQvCBE0VEC81Fbv@zayin-east.79pggjl.mongodb.net/zayin-db?retryWrites=true&w=majority"; 
 
 //SHOULD UNCOMMENT IN MAIN WHICH IS DEPLOYED TO HEROKU
-const uri = process.env.MONGODB_URI;
+//const uri = process.env.MONGODB_URI;
 
 let database = "";
 let collection = "";
@@ -66,7 +66,6 @@ app.put('/watchHistory/save', async (req, res) => {
 });
 
 app.put('/topGenres/save', async (req, res) => {
-  curr_user = "tester"; //temporary, delete later 
   collection.findOneAndUpdate(
     { username: curr_user },
     {

@@ -11,23 +11,28 @@ fetch("/accountsetting")
     .then((response) => response.json())
     .then((data) => {
         console.log(data);
-        data = data[0];
         // check if there is any existing user in our database
         if (data.length > 0) {
+            console.log("hello");
             // try to get the first user information in our database
-            if ("username" in data) {
+            if ("username" in data[0]) {
                 // console.log(data[0]['watch_history']);
-                curr_user = data['username'];
+                curr_user = data[0]['username'];
+                console.log(curr_user);
             }
-            if ("picture" in data) {
-                picture = data['picture'];
+            if ("picture" in data[0]) {
+                picture = data[0]['picture'];
             }
-            if ("watch_history" in data) {
+            if ("watch_history" in data[0]) {
                 // console.log(data[0]['watch_history']);
-                watch_history_data = data['watch_history'];
+                console.log("wh");
+                watch_history_data = data[0]['watch_history'];
+                console.log(watch_history_data);
             }
-            if ("genres" in data) {
-                top_genres_data = data['genres'];
+            if ("genres" in data[0]) {
+                console.log("g");
+                top_genres_data = data[0]['genres'];
+                console.log(top_genres_data);
             }
         }
 
@@ -100,7 +105,7 @@ function addMovie() {
         const theP = document.createElement("p");
         theP.innerHTML = watch_history_input;
         movieList.appendChild(theP);
-        watch_history_data.push(watch_history_input);
+        watch_history_data.unshift(watch_history_input);
         // console.log(JSON.stringify({
         //     watch_history: watch_history_data
         // }));
@@ -136,7 +141,7 @@ function addGenre() {
         const theP = document.createElement("p");
         theP.innerHTML = top_genre_input;
         genreList.appendChild(theP);
-        top_genres_data.push(top_genre_input);
+        top_genres_data.unshift(top_genre_input);
 
         fetch('/topGenres/save', {
             method: 'put',
