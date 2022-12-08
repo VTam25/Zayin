@@ -1,17 +1,22 @@
-const express = require('express'); 
-const bodyParser = require('body-parser');
+import express, { response } from 'express';
+import bodyParser from 'body-parser';
+import { MongoClient } from 'mongodb';
+import { MiniCrypt } from './miniCrypt.js';
+
 const app = express(); 
 app.use(express.static("public"));
 app.use(bodyParser.json());
 const port = 8000; 
 
+
 let curr_user = "";
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 app.use('/', express.static('public/html'));
 
-const { MongoClient } = require("mongodb");
+const mc = new MiniCrypt();
 
 const uri = "mongodb+srv://team:FOQvCBE0VEC81Fbv@zayin-east.79pggjl.mongodb.net/zayin-db?retryWrites=true&w=majority"; 
 // maybe need to hide this with secrets or get the line below to work
@@ -26,13 +31,11 @@ MongoClient.connect(uri, { useUnifiedTopology: true })
     collection = database.collection('users');
   }).catch(console.error);
   
-  
-  app.get("/accountsetting", async function (req, res) {
-  curr_user = "tester"; //temporary, delete later 
+
+app.get("/accountsetting", async function (req, res) {
   const user = await collection.find({ "username": `${curr_user}` }).toArray();
-  // console.log(user);
   return res.json(user);
-});
+  });
 
 app.put('/watchHistory/save', async (req, res) => {
   curr_user = "tester"; //temporary, delete later 
@@ -66,24 +69,7 @@ app.put('/topGenres/save', async (req, res) => {
       upsert: true
     }
   )
-  const user = await collection.find({ "username": `${curr_user}` }).toArray();
-  return res.json(user);
-});
 
-app.put('profilePicture/save', async (req, res) => {
-  curr_user = "tester";
-  console.log(req.body.picture);
-  collection.findOneAndUpdate(
-    {username, curr_user},
-    {
-      $set: {
-        picture: req.body.picture
-      }
-    },
-    {
-      upsert: true
-    }
-  )
   const user = await collection.find({ "username": `${curr_user}` }).toArray();
   return res.json(user);
 });
@@ -104,7 +90,6 @@ app.delete('/user/delete', (req, res) => {
 app.put("/friends", async function (req, res){
   console.log("In friends put");
   console.log(req.body);
-  curr_user = "tester"; //temporary, delete later 
   collection.findOneAndUpdate(
     {username: curr_user},
     {
@@ -123,17 +108,26 @@ app.put("/friends", async function (req, res){
 
 app.get("/friends", async function (req, res){
   console.log("In friends get");
-  curr_user = "tester"; //temporary, delete later 
   const user = await collection.find({"username": `${curr_user}`}).toArray();
-  return res.json(user);
+  console.log("printing user inside friends");
+  console.log(user);
+  return res.json(user); 
 
 });
 
+
+app.get("/update_dashboard", async function (req, res) {
+  const user = await collection.find({"username": `${curr_user}`}).toArray();
+  console.log(user);
+  return res.json(user);
+});
+
+
 app.post('/signup', async function (req, res){
   console.log(req.body);
-  collection.insertOne(req.body).then(result => {
+  const [salt, hash] = mc.hash(req.body.password_hash);
+  collection.insertOne({"username": req.body.username, "password_hash": hash, "salt": salt}).then(result => {
     console.log(result);
-    console.log(req.body.username);
     curr_user = req.body.username;
   }).catch(error => console.error(error));
   res.redirect('/AccountSetting.html');
@@ -143,6 +137,29 @@ app.post('/', async function (req, res){
   res.redirect('/dashboard.html');
 });
 
+
+app.post('/login/curruser', async function (req,res){
+
+  curr_user = req.body.username;
+  const pw = req.body.pw;
+  const user = await collection.find({"username": `${curr_user}`}).toArray();
+  console.log(user);
+  const password_hash = user[0].password_hash;
+  const salt = user[0].salt;
+
+  if (!mc.check(pw, salt, password_hash)) {
+    res.json({"valid" : "false"});
+  }
+  else {
+    res.json({"valid" : "true"});
+  }
+});
+
+app.get('/login/curruser', async function (req,res) {
+  const user = await collection.find({"username": `${curr_user}`}).toArray();
+  //console.log(user);
+  return res.json(user);
+});
 
 app.listen(process.env.PORT || port, () => {
   console.log(`Example app listening at http://localhost:${port}`); 

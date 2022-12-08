@@ -50,4 +50,4 @@ function show_friends() {
         f_name: friend_name
       })
       })
-    });
+  });
