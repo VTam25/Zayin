@@ -21,7 +21,6 @@ User
       //Friend object is {"f_name": "name", "f_movies": List}
     }
 
-
 For the movie data we will be using The Movie Database API.
 
 
