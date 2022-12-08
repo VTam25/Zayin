@@ -101,7 +101,7 @@ app.put("/friends/add", async function (req, res){
     {username: curr_user},
     {
      $push: {
-      friends : {"f_name": req.body.f_name, "f_movies": "[]"}
+      friends : {"f_name": req.body.f_name, "f_movies": req.body.f_movies}
      }
     },
     {
@@ -116,7 +116,6 @@ app.get("/friends", async function (req, res){
   console.log("In friends get");
   const user = await collection.find({"username": `${curr_user}`}).toArray();
   return res.json(user);
-
 });
 
 app.post('/signup', async function (req, res){
@@ -128,6 +127,12 @@ app.post('/signup', async function (req, res){
   }).catch(error => console.error(error));
   res.redirect('/AccountSetting.html');
 })
+
+app.get("/movie", async function (req, res){
+  console.log("In movie from server.js");
+  const user = await collection.find({"username": `${curr_user}`}).toArray();
+  return res.json(user);
+});
 
 app.post('/', async function (req, res){
   res.redirect('/dashboard.html');

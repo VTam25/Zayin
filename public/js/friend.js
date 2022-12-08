@@ -48,7 +48,7 @@ function show_friends() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         f_name: friend_name,
-        f_movies: "[]"
+        f_movies: ["The Guardians of the Galaxy Holiday Special"]
       })
       }).then(res => {
         if (res.ok){

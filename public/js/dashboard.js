@@ -1,6 +1,6 @@
 document.getElementById("pick-friend1").addEventListener("click", (event) => {
     location.href = "ConfirmationPage.html";
-    window.sessionStorage.setItem("movie_friend", "Lizzie");  
+    window.sessionStorage.setItem("movie_friend", "Wendy");  
 });
 
 document.getElementById("pick-friend2").addEventListener("click", (event) => {
