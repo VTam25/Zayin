@@ -162,19 +162,6 @@ function addGenre() {
 
 document.getElementById('remove_account_button').addEventListener("click", async (name, response) => {
     if (confirm("Are you sure want to delete this user?")) {
-        // your AJAX CALL HERE
-        // delete user_database[name];
-        // fs.writeFileSync(JSONfile, JSON.stringify(user_database));
-        // console.log(event);
-
-        // const response = fetch('http://localhost:8000/del_user/?user1',
-        //     {
-        //         method: 'DELETE',
-        //         headers: {
-        //             'Content-type': 'application/json'
-        //         }
-        //     });
-
         fetch('/user/delete', {
             method: 'delete',
             headers: { 'Content-Type': 'application/json' },
