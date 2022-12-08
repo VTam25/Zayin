@@ -2,6 +2,7 @@ import express, { response } from 'express';
 import bodyParser from 'body-parser';
 import { MongoClient } from 'mongodb';
 import { MiniCrypt } from './miniCrypt.js';
+import MovieDB from 'node-themoviedb';
 
 const app = express(); 
 app.use(express.static("public"));
@@ -16,13 +17,22 @@ app.use(bodyParser.json());
 
 app.use('/', express.static('public/html'));
 
+
+// const { MongoClient } = require("mongodb");
+
+// const MC = require('./miniCrypt');
 const mc = new MiniCrypt();
 
+//ONLY FOR LOCAL TESTING, DELETE FOR FINAL
 const uri = "mongodb+srv://team:FOQvCBE0VEC81Fbv@zayin-east.79pggjl.mongodb.net/zayin-db?retryWrites=true&w=majority"; 
-// maybe need to hide this with secrets or get the line below to work
-// const uri = process.env.MONGODB_URI;
+
+//SHOULD UNCOMMENT IN MAIN WHICH IS DEPLOYED TO HEROKU
+//const uri = process.env.MONGODB_URI;
+
 let database = "";
 let collection = "";
+
+const mdb = new MovieDB("2689ce531204fb32c1a0ca82f46d0191");
 
 MongoClient.connect(uri, { useUnifiedTopology: true })
   .then(client => {
@@ -86,32 +96,39 @@ app.delete('/user/delete', (req, res) => {
   .catch(error => console.error(error))
 });
 
-app.put("/friends", async function (req, res){
-  console.log("In friends put");
+app.put("/friends/add", async function (req, res){
+  console.log("In friends add");
   console.log(req.body);
-  collection.findOneAndUpdate(
-    {username: curr_user},
-    {
-     $push: {
-      friends : {"f_name": req.body.f_name, "f_movies": ""}
-     }
-    },
-    {
-      upsert: false
-    }
-    ).then(result => {
-      console.log(result);
-      res.json("Success");
-    }).catch(error => console.error(error));
+
+  const friend = await collection.find({"username": req.body.f_name}).toArray();
+
+  if(friend.length === 0){
+    console.log("Friend does not exist");
+  }
+  else{
+    console.log("Friend exists");
+    console.log(friend)
+  
+    collection.findOneAndUpdate(
+      {username: curr_user},
+      {
+       $push: {
+        friends : {"f_name": req.body.f_name, "f_movies": friend[0].watch_history}
+       }
+      },
+      {
+        upsert: true
+      }
+      ).then(result => {
+        console.log(result);
+      }).catch(error => console.error(error));
+  }
 });
 
 app.get("/friends", async function (req, res){
   console.log("In friends get");
   const user = await collection.find({"username": `${curr_user}`}).toArray();
-  console.log("printing user inside friends");
-  console.log(user);
-  return res.json(user); 
-
+  return res.json(user);
 });
 
 
@@ -125,12 +142,18 @@ app.get("/update_dashboard", async function (req, res) {
 app.post('/signup', async function (req, res){
   console.log(req.body);
   const [salt, hash] = mc.hash(req.body.password_hash);
-  collection.insertOne({"username": req.body.username, "password_hash": hash, "salt": salt}).then(result => {
+  collection.insertOne({"username": req.body.username, "password_hash": hash, "salt": salt, "watch_history": [], "genres": []}).then(result => {
     console.log(result);
     curr_user = req.body.username;
   }).catch(error => console.error(error));
   res.redirect('/AccountSetting.html');
 })
+
+app.get("/movie", async function (req, res){
+  console.log("In movie from server.js");
+  const user = await collection.find({"username": `${curr_user}`}).toArray();
+  return res.json(user);
+});
 
 app.post('/', async function (req, res){
   res.redirect('/dashboard.html');

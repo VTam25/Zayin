@@ -1,14 +1,17 @@
-document.getElementById("pick-friend1").addEventListener("click", (event) => 
-    location.href = "../html/ConfirmationPage.html"
-);
+document.getElementById("pick-friend1").addEventListener("click", (event) => {
+    location.href = "ConfirmationPage.html";
+    window.sessionStorage.setItem("movie_friend", "Wendy");  
+});
 
-document.getElementById("pick-friend2").addEventListener("click", (event) => 
-    location.href = "../html/ConfirmationPage.html"
-);
+document.getElementById("pick-friend2").addEventListener("click", (event) => {
+    location.href = "ConfirmationPage.html";
+    window.sessionStorage.setItem("movie_friend", "Joy");  
+});
 
-document.getElementById("pick-friend3").addEventListener("click", (event) => 
-    location.href = "../html/ConfirmationPage.html"
-);
+document.getElementById("pick-friend3").addEventListener("click", (event) => {
+    location.href = "ConfirmationPage.html";
+    window.sessionStorage.setItem("movie_friend", "Lizzie");  
+});
 
 function update_dashboard() {
     fetch("/update_dashboard")

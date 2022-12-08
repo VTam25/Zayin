@@ -21,10 +21,9 @@ function show_friends() {
           pic.id = ("profile");
           newDiv.appendChild(pic);
 
-          const link = document.createElement("a");
-          link.href = "../html/movie.html";
-          link.innerHTML = entry.f_name;
-          newDiv.appendChild(link);
+          const text = document.createElement("a");
+          text.innerHTML = entry.f_name;
+          newDiv.appendChild(text);
 
           const brk = document.createElement("br");
           newDiv.appendChild(brk);
@@ -37,17 +36,25 @@ function show_friends() {
   window.onload = show_friends();
 
   const update = document.getElementById('add_btn');
+  const search = document.getElementById('search_btn');
 
   update.addEventListener('click', () => {
     console.log("Clicked");
     const friend_name = document.getElementById("friend_name").value;
     console.log("in event");
     console.log(friend_name);
-    fetch('/friends', {
+    fetch('/friends/add', {
       method: 'put',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        f_name: friend_name
+        f_name: friend_name,
+        f_movies: []
       })
+      }).then(res => {
+        if (res.ok){
+          return res.json();
+        }
       })
+      update.location.href = "../html/friends.html";
+    });
   });
