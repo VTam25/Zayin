@@ -58,11 +58,6 @@ fetch("/accountsetting")
         }
 
         document.getElementById("output").src = picture;
-
-        console.log(curr_user);
-        console.log(picture);
-        console.log(watch_history_data);
-        console.log(top_genres_data);
     });
 
 document.getElementById('picture').addEventListener("change", loadFile);
