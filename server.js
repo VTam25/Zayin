@@ -142,7 +142,7 @@ app.get("/update_dashboard", async function (req, res) {
 app.post('/signup', async function (req, res){
   console.log(req.body);
   const [salt, hash] = mc.hash(req.body.password_hash);
-  collection.insertOne({"username": req.body.username, "password_hash": hash, "salt": salt, "watch_history": [], "genres": []}).then(result => {
+  collection.insertOne({"username": req.body.username, "password_hash": hash, "salt": salt, "watch_history": [], "genres": [], "friends": []}).then(result => {
     console.log(result);
     curr_user = req.body.username;
   }).catch(error => console.error(error));
