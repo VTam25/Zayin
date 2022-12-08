@@ -9,10 +9,6 @@ body {
     height: 100%;
 }
 
-a {
-    color : red;
-}
-
 label {
     font-size: larger;
     font-weight: bold;

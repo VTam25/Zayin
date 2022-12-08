@@ -12,14 +12,15 @@ async function getHistory(){
         const user_history = data[0].watch_history;
         let friend_history = [];
         const friends_arr = data[0].friends;
-
+        console.log(friends_arr);
         //get friend movie history
-        for(const entry in friends_arr){
+        for(const entry of friends_arr){
+            console.log(entry);
             if(entry.f_name === friend){
                 friend_history = entry.f_movies;
             }
         }
-
+        console.log(friend_history);
         const temp = user_history.concat(friend_history);
         console.log(temp);
         for(const m of temp){

@@ -97,19 +97,30 @@ app.delete('/user/delete', (req, res) => {
 app.put("/friends/add", async function (req, res){
   console.log("In friends add");
   console.log(req.body);
-  collection.findOneAndUpdate(
-    {username: curr_user},
-    {
-     $push: {
-      friends : {"f_name": req.body.f_name, "f_movies": req.body.f_movies}
-     }
-    },
-    {
-      upsert: true
-    }
-    ).then(result => {
-      console.log(result);
-    }).catch(error => console.error(error));
+
+  const friend = await collection.find({"username": req.body.f_name}).toArray();
+
+  if(friend.length === 0){
+    console.log("Friend does not exist");
+  }
+  else{
+    console.log("Friend exists");
+    console.log(friend)
+  
+    collection.findOneAndUpdate(
+      {username: curr_user},
+      {
+       $push: {
+        friends : {"f_name": req.body.f_name, "f_movies": friend[0].watch_history}
+       }
+      },
+      {
+        upsert: true
+      }
+      ).then(result => {
+        console.log(result);
+      }).catch(error => console.error(error));
+  }
 });
 
 app.get("/friends", async function (req, res){
@@ -121,7 +132,7 @@ app.get("/friends", async function (req, res){
 app.post('/signup', async function (req, res){
   console.log(req.body);
   const [salt, hash] = mc.hash(req.body.password_hash);
-  collection.insertOne({"username": req.body.username, "password_hash": hash, "salt": salt}).then(result => {
+  collection.insertOne({"username": req.body.username, "password_hash": hash, "salt": salt, "watch_history": []}).then(result => {
     console.log(result);
     curr_user = req.body.username;
   }).catch(error => console.error(error));

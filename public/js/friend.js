@@ -21,10 +21,9 @@ function show_friends() {
           pic.id = ("profile");
           newDiv.appendChild(pic);
 
-          const link = document.createElement("a");
-          link.href = "../html/movie.html";
-          link.innerHTML = entry.f_name;
-          newDiv.appendChild(link);
+          const text = document.createElement("a");
+          text.innerHTML = entry.f_name;
+          newDiv.appendChild(text);
 
           const brk = document.createElement("br");
           newDiv.appendChild(brk);
@@ -37,6 +36,7 @@ function show_friends() {
   window.onload = show_friends();
 
   const update = document.getElementById('add_btn');
+  const search = document.getElementById('search_btn');
 
   update.addEventListener('click', () => {
     console.log("Clicked");
@@ -48,7 +48,7 @@ function show_friends() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         f_name: friend_name,
-        f_movies: ["The Guardians of the Galaxy Holiday Special"]
+        f_movies: []
       })
       }).then(res => {
         if (res.ok){
