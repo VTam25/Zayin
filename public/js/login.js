@@ -1,35 +1,28 @@
-//import user from './server.js'
-
 document.getElementById('submit').addEventListener("click", async (event) => {
-//     console.log("event");
-//     console.log(document.getElementById('uname'));
-//     curr_user = document.getElementById('uname').value;
-    location.href = "../html/dashboard.html"
+    let curr_user = document.getElementById('uname').value;
+    let pw = document.getElementById('pass').value;
 
-    //fetch("/login")
-    // .then((response) => response.json())
-    // .then((data) => {
-    //     if (data[0].password === document.getElementById('pass').value) {
-           // location.href = "../html/dashboard.html";
-    //     }
-
-    //     else {
-    //         window.alert("Incorrect Password");
-    //         document.getElementById('uname').value;
-    //         document.getElementById('pass').value;
-    //     }
-    // });
-
-
-    
-
-
-
-
+    fetch("/login/curruser", {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            "username": curr_user,
+            "pw": pw
+        })
+    })
+    .then((response) => response.json())
+    .then((data) => {
+        if (data.valid == "true") {
+            console.log("false");
+            location.href = "../html/dashboard.html"
+        }
+        else {
+            location.href = "../html/index.html"
+        }
+    });
 
 });
 
-//document.getElementById('profile_pic')= fetch(url for get request to update the profile picture)
 
 
 document.getElementById('sign-up').addEventListener("click", (event) => 
