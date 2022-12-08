@@ -38,7 +38,6 @@ app.get("/accountsetting", async function (req, res) {
   });
 
 app.put('/watchHistory/save', async (req, res) => {
-  curr_user = "tester"; //temporary, delete later 
   console.log(req.body);
   console.log(req.body.watch_history);
   collection.findOneAndUpdate(
