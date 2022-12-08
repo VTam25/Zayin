@@ -57,3 +57,4 @@ function show_friends() {
       })
       update.location.href = "../html/friends.html";
     });
+  });

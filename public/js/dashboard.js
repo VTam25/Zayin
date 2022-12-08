@@ -13,50 +13,57 @@ document.getElementById("pick-friend3").addEventListener("click", (event) => {
     window.sessionStorage.setItem("movie_friend", "Lizzie");  
 });
 
-
-
-
-function show_top_genres() {
-    fetch("/friends")
+function update_dashboard() {
+    fetch("/update_dashboard")
     .then((response) => response.json())
     .then((data) => {
-        console.log(data[0]);
 
         const genres_arr = data[0].genres;
+        const friends_arr = data[0].friends;
+        const history_arr = data[0].watch_history;
 
-        //console.log(data[0].genres)
-
-        const genre1 = document.getElementById('genre1');
-        const theP1 = document.createElement('p');
+        const genre1 = document.getElementById('genre1-name');
         const text1 = document.createTextNode(genres_arr[0]);
 
-        theP1.appendChild(text1);
-        genre1.appendChild(theP1);
+        genre1.appendChild(text1);
 
-        const genre2 = document.getElementById('genre2');
-        const theP2 = document.createElement('p');
+        const genre2 = document.getElementById('genre2-name');
         const text2 = document.createTextNode(genres_arr[1]);
         
-        theP2.appendChild(text2);
-        genre2.appendChild(theP2);
+        genre2.appendChild(text2);
 
 
-        const genre3 = document.getElementById('genre3');
-        const theP3 = document.createElement('p');
+        const genre3 = document.getElementById('genre3-name');
+        // const theP3 = document.createElement('p');
         const text3 = document.createTextNode(genres_arr[2]);
         
-        theP3.appendChild(text3);
-        genre3.appendChild(theP3);
+        genre3.appendChild(text3);
+
+        const movie1 = document.getElementById("movie-name1");
+        const title1 = document.createTextNode(history_arr[0]);
+
+        movie1.appendChild(title1);
+
+        const movie2 = document.getElementById("movie-name2");
+        const title2 = document.createTextNode(history_arr[1]);
+
+        movie2.appendChild(title2);
+
+        const movie3 = document.getElementById("movie-name3");
+        const title3 = document.createTextNode(history_arr[2]);
+
+        movie3.appendChild(title3);
+
+        for (let i = 1; i <= friends_arr.length; i++) {
+            let id = "pick-friend" + i.toString();
+            console.log(id);
+            const friend = document.getElementById(id);
+            friend.innerHTML = friends_arr[i - 1].f_name;
+        }
+
+
     })
 }
 
+window.onload = update_dashboard();
 
-function show_friends_list() {
-    fetch("/friends")
-    .then((response) => response.json())
-    .then((data) => {
-        
-    })
-}
-
-window.onload = show_top_genres();
