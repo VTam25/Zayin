@@ -1,0 +1,42 @@
+body {
+    font-family: 'Oxygen', serif;
+    height: 100%;
+    position: relative;
+  }
+  
+  /* banner css */
+  
+  .navbar {
+    background-color: black;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+  
+  .navbar-right {
+    float: right;
+    padding-top: 2%;
+    padding-right: 2%;
+  }
+  
+  .navbar a {
+    padding: 12px;
+    color: white;
+    background-color: rgb(49, 46, 46);
+    text-decoration: none;
+    font-size: 17px;
+    border-radius: 5%;
+  }
+  
+  .navbar .profile_pic {
+    border-radius: 50%;
+  }
+  
+  .navbar a:hover {
+    background-color: grey;
+  }
+  
+  .navbar #logo {
+    float: left;
+  }

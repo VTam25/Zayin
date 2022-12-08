@@ -1,0 +1,162 @@
+/* confirmation page css */
+
+.selections {
+  padding-left: 5%;
+  padding-top: 5%;
+}
+
+.options {
+  padding-top: 1%;
+}
+
+.selections legend {
+  padding-top: 5%;
+}
+
+.selections label,
+.selections legend {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+#red_text {
+  color: red;
+}
+
+#yes,
+#no {
+  color: white;
+  background-color: rgb(203, 28, 28);
+  border-radius: 5%;
+  border-style: hidden;
+  padding: 5px 15px 5px 15px;
+}
+
+/* account setting css */
+
+.profilepic {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #111;
+}
+
+.profilepic:hover .profilepic__content {
+  opacity: 1;
+}
+
+.profilepic:hover .profilepic__image {
+  opacity: .5;
+}
+
+.profilepic__image {
+  object-fit: cover;
+  opacity: 1;
+  transition: opacity .2s ease-in-out;
+}
+
+.profilepic__content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  opacity: 0;
+  transition: opacity .2s ease-in-out;
+}
+
+.profilepic__icon {
+  color: white;
+  padding-bottom: 8px;
+}
+
+.fas {
+  font-size: 20px;
+}
+
+.profilepic__text {
+  text-transform: uppercase;
+  font-size: 12px;
+  width: 50%;
+  text-align: center;
+}
+
+.profilepic__text:hover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, .8);
+  z-index: 10000;
+  color: rgb(250, 250, 250);
+  transition: background-color .2s ease-in-out;
+  border-radius: 100px;
+  margin-bottom: 0;
+}
+
+.profile {
+  display: grid;
+  grid-template-columns: [line1] 50% [line2] 50% [line3];
+  /* grid-template-rows: [row1-start] 25% [row1-end] 100px [third-line] auto [last-line]; */
+  /* grid-template-rows: [row1-start] 50% [row1-end] 50% [third-line]; */
+  grid-template-rows: auto;
+  row-gap: 100px;
+  grid-template-areas:
+    "a b"
+    "a c";
+}
+
+.item-a {
+  grid-area: a;
+  /* background-color: aquamarine; */
+  padding: 5% 0% 0% 5%;
+}
+
+.item-b {
+  grid-area: b;
+  /* background-color: cadetblue; */
+  padding: 5% 0% 10% 0%;
+}
+
+.item-c {
+  grid-area: c;
+  /* background-color: aqua; */
+  padding: 0% 0% 10% 0%;
+}
+
+.profile_content .header {
+  font-weight: normal;
+  text-align: center;
+  font-size: large;
+  background-color: rgb(242, 236, 169);
+  border: 2px solid yellow;
+  border-radius: 50px;
+  padding: 1% 30% 1% 30%;
+  width: 89%
+}
+
+#watch_history,
+#top_genres {
+  padding: 1% 1% 1% 1%;
+  width: 89%
+}
+
+.item-b p,
+.item-c p {
+  padding: 1%;
+  border-bottom: solid red;
+  width: 89%
+}
+
+#email, 
+#reset_password {
+  /* background-color: aqua; */
+  padding: 1% 0% 10% 0%;
+  font-size: large;
+}
