@@ -66,7 +66,6 @@ app.put('/watchHistory/save', async (req, res) => {
 });
 
 app.put('/topGenres/save', async (req, res) => {
-  curr_user = "tester"; //temporary, delete later 
   collection.findOneAndUpdate(
     { username: curr_user },
     {
