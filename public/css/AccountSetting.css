@@ -30,8 +30,6 @@
   .profile {
     display: grid;
     grid-template-columns: [line1] 50% [line2] 50% [line3];
-    /* grid-template-rows: [row1-start] 25% [row1-end] 100px [third-line] auto [last-line]; */
-    /* grid-template-rows: [row1-start] 50% [row1-end] 50% [third-line]; */
     grid-template-rows: auto;
     row-gap: 100px;
     grid-template-areas:
@@ -41,13 +39,11 @@
   
   .item-a {
     grid-area: a;
-    /* background-color: aquamarine; */
     padding: 5% 0% 0% 5%;
   }
   
   .item-b {
     grid-area: b;
-    /* background-color: cadetblue; */
     padding: 5% 0% 10% 0%;
   }
   
