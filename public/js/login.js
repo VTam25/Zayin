@@ -13,7 +13,6 @@ document.getElementById('submit').addEventListener("click", async (event) => {
     .then((response) => response.json())
     .then((data) => {
         if (data.valid == "true") {
-            console.log("false");
             location.href = "../html/dashboard.html"
         }
         else {
