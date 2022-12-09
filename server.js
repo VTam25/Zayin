@@ -48,8 +48,6 @@ app.get("/accountsetting", async function (req, res) {
   });
 
 app.put('/watchHistory/save', async (req, res) => {
-  console.log(req.body);
-  console.log(req.body.watch_history);
   collection.findOneAndUpdate(
     { username: curr_user },
     {
@@ -84,8 +82,6 @@ app.put('/topGenres/save', async (req, res) => {
 
 app.delete('/user/delete', (req, res) => {
   // Handle delete event here
-  console.log(req.body.name);
-
   collection.deleteOne(
     { username: req.body.name }
   )
