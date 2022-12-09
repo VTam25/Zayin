@@ -2,13 +2,10 @@ function show_friends() {
     fetch("/friends")
       .then((response) => response.json())
       .then((data) => {
-        //console.log(data[0]);
         const friends_arr = data[0].friends;
         const friendUL = document.getElementById("friends_list");
-        //console.log(friends_arr);
 
         for(const entry of friends_arr){
-          //console.log(entry);
           const newFriend = document.createElement("li");
           newFriend.classList.add("friend");
           friendUL.appendChild(newFriend);
@@ -39,10 +36,7 @@ function show_friends() {
   const search = document.getElementById('search_btn');
 
   update.addEventListener('click', () => {
-    console.log("Clicked");
     const friend_name = document.getElementById("friend_name").value;
-    console.log("in event");
-    console.log(friend_name);
     fetch('/friends/add', {
       method: 'put',
       headers: { 'Content-Type': 'application/json' },
