@@ -35,9 +35,7 @@ function update_dashboard() {
         
         genre2.appendChild(text2);
 
-
         const genre3 = document.getElementById('genre3-name');
-        // const theP3 = document.createElement('p');
         const text3 = document.createTextNode(genres_arr[2]);
         
         genre3.appendChild(text3);
@@ -63,7 +61,6 @@ function update_dashboard() {
             const friend = document.getElementById(id);
             friend.innerHTML = friends_arr[i - 1].f_name;
         }
-
 
     })
 }
