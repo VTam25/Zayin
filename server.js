@@ -18,13 +18,7 @@ app.use(bodyParser.json());
 app.use('/', express.static('public/html'));
 
 
-// const { MongoClient } = require("mongodb");
-
-// const MC = require('./miniCrypt');
 const mc = new MiniCrypt();
-
-//ONLY FOR LOCAL TESTING, DELETE FOR FINAL
-//const uri = "mongodb+srv://team:FOQvCBE0VEC81Fbv@zayin-east.79pggjl.mongodb.net/zayin-db?retryWrites=true&w=majority"; 
 
 //SHOULD UNCOMMENT IN MAIN WHICH IS DEPLOYED TO HEROKU
 const uri = process.env.MONGODB_URI;
@@ -36,7 +30,6 @@ const mdb = new MovieDB("2689ce531204fb32c1a0ca82f46d0191");
 
 MongoClient.connect(uri, { useUnifiedTopology: true })
   .then(client => {
-    console.log('Connected to Database');
     database = client.db('zayin-db');
     collection = database.collection('users');
   }).catch(console.error);
@@ -174,7 +167,6 @@ app.post('/login/curruser', async function (req,res){
 
 app.get('/login/curruser', async function (req,res) {
   const user = await collection.find({"username": `${curr_user}`}).toArray();
-  //console.log(user);
   return res.json(user);
 });
 
