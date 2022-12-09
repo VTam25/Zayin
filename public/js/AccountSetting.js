@@ -13,26 +13,18 @@ fetch("/accountsetting")
         console.log(data);
         // check if there is any existing user in our database
         if (data.length > 0) {
-            console.log("hello");
-            // try to get the first user information in our database
+            // get the first user information in our database
             if ("username" in data[0]) {
-                // console.log(data[0]['watch_history']);
                 curr_user = data[0]['username'];
-                console.log(curr_user);
             }
             if ("picture" in data[0]) {
                 picture = data[0]['picture'];
             }
             if ("watch_history" in data[0]) {
-                // console.log(data[0]['watch_history']);
-                console.log("wh");
                 watch_history_data = data[0]['watch_history'];
-                console.log(watch_history_data);
             }
             if ("genres" in data[0]) {
-                console.log("g");
                 top_genres_data = data[0]['genres'];
-                console.log(top_genres_data);
             }
         }
 
@@ -70,7 +62,6 @@ document.getElementById('picture').addEventListener("change", loadFile);
 function loadFile(event) {
     const image = document.getElementById("output");
     image.src = URL.createObjectURL(event.target.files[0]);
-    // console.log(image);
     fetch('/profilePicture/save', {
         method: 'put',
         headers: { 'Content-Type': 'application/json' },
@@ -106,9 +97,6 @@ function addMovie() {
         theP.innerHTML = watch_history_input;
         movieList.appendChild(theP);
         watch_history_data.unshift(watch_history_input);
-        // console.log(JSON.stringify({
-        //     watch_history: watch_history_data
-        // }));
 
         fetch('/watchHistory/save', {
             method: 'put',
@@ -119,16 +107,12 @@ function addMovie() {
         })
     }
 
-    // console.log(JSON.stringify({ watch_history: watch_history_data }));
-
     // get updated user watch history list
     fetch("/accountsetting")
         .then((response) => response.json())
         .then((data) => {
             watch_history_data = data[0]['watch_history'];
         });
-
-    // console.log(watch_history_data);
 }
 
 document.getElementById('genre_input').addEventListener("click", addGenre);
