@@ -12,28 +12,21 @@ async function getHistory(){
         const user_history = data[0].watch_history;
         let friend_history = [];
         const friends_arr = data[0].friends;
-        console.log(friends_arr);
         //get friend movie history
         for(const entry of friends_arr){
-            console.log(entry);
             if(entry.f_name === friend){
                 friend_history = entry.f_movies;
             }
         }
-        console.log(friend_history);
         const temp = user_history.concat(friend_history);
-        console.log(temp);
         for(const m of temp){
-            console.log(m);
             history.push(m);
         }
     });
-    console.log(history);
 }
 
 const movie_list = [];
 async function getList(){
-    console.log("in get list");
     await getHistory()
     await fetch(url)
     .then(function(response) {
@@ -44,7 +37,6 @@ async function getList(){
     })
     .then(function(data) {
         // conversion to JSON success
-        //console.log(data);
         let counter = 0;
         while(movie_list.length != 10){
             const movie = data.results[counter].title;
@@ -69,8 +61,6 @@ async function showList(){
     const movieOL = document.getElementById("m_list");
     
     for(const entry of movie_list){
-        // console.log(entry);
-        // console.log("level");
         const newM = document.createElement("li");
         newM.classList.add("movie");
         newM.innerHTML = entry;
