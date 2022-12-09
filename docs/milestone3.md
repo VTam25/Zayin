@@ -33,6 +33,10 @@ How to Test:
 Username: viv
 Password: tester
 
+
+### edit (12/9): these credentials will no longer work due to password encryption. please use the following instead: 
+### Username: Joy, Password: red
+
 Without existing credentials, you can click the "Sign Up" button which will navigate to the sign up page. Here, new credentials can be created and would look like this: 
 
 ![image](https://user-images.githubusercontent.com/100488724/202967751-7b7a8ad3-7ccd-497b-96c5-b9c0d5722096.png)
