@@ -154,6 +154,9 @@ app.post('/login/curruser', async function (req,res){
   const pw = req.body.pw;
   const user = await collection.find({"username": `${curr_user}`}).toArray();
   console.log(user);
+  if (user.length === 0) {
+    res.json({"valid" : "false"});
+  }
   const password_hash = user[0].password_hash;
   const salt = user[0].salt;
 
