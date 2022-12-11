@@ -46,11 +46,9 @@ Movie List page that gives user movies within their selected genre
 
 Friends List page that shows user's friends and lets you add a friend
 
-<img width="1440" alt="Screen Shot 2022-12-10 at 9 09 55 PM" src="https://user-images.githubusercontent.com/26626021/206883551-9ba32e9f-5cab-485b-843c-79bf3281af2f.png">
+<img width="1440" alt="Screen Shot 2022-12-10 at 9 10 24 PM" src="https://user-images.githubusercontent.com/26626021/206888965-87da89e0-39bb-42b4-b1e4-bf5f3a67e703.png">
 
 Account Settings page that allows you to add top genres, recently watched movies, and delete your account. You can also change your profile picture on this page but it is not saved to the database or updated in the rest of the application.
-
-<img width="1440" alt="Screen Shot 2022-12-10 at 9 10 24 PM" src="https://user-images.githubusercontent.com/26626021/206888965-87da89e0-39bb-42b4-b1e4-bf5f3a67e703.png">
 
 ### APIs/URL Routes/Mappings
 
