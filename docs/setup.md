@@ -6,7 +6,7 @@ Link to video demo: https://www.youtube.com/watch?v=LZjWtXYt-Gs
 Creating an account or logging in:
 1. Navigate to https://zayin.herokuapp.com/
 2. If you do not already have an account, click sign up to be brought to the signup page.
-3. If you have just created an account, you will be brought to account settings. Otherwise, you will be brought to the dashboard.
+3. If you have just created an account, you will be brought to account settings. Otherwise, you will be brought to the dashboard after logging in with an existing username and password.
 
 Updating account:
 1. Enter in any recently watched movies or your top genres in Account Settings (can navigate there through the navigation bar on the top right). You can also delete your account through Account Settings.
