@@ -50,8 +50,10 @@ Friends List page that shows user's friends and lets you add a friend
 
 Account Settings page that allows you to add top genres, recently watched movies, and delete your account. You can also change your profile picture on this page but it is not saved to the database or updated in the rest of the application.
 
-### APIs
-### URL Routes/Mappings
+### APIs/URL Routes/Mappings
+
+![Untitled Notebook-24 2](https://user-images.githubusercontent.com/100488724/206887914-6c2cc9ec-2040-4b77-a0f6-dcc0a643dedf.jpg)
+
 ### Authentication/Authorization
 We use password encrytion and salts using the crypto Node.js library and MiniCrypt wrapper provided in class. When creating an account through the Sign Up page, the password hash and corresponding user salt is saved to the database. When a user tries to log in, we authenticate that the user's typed password matches what we have saved after hashing with sha256_hash and the saved salt. If you have not logged in or signed up with an account, the buttons on the navigation bar for Dashboard, Friends List, and Account Settings will not lead anywhere.
 
