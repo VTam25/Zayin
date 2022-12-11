@@ -3,6 +3,10 @@
 
 Link to video demo: https://www.youtube.com/watch?v=LZjWtXYt-Gs
 
+Existing User Credentials:
+Username: Joy
+Password: red
+
 Creating an account or logging in:
 1. Navigate to https://zayin.herokuapp.com/
 2. If you do not already have an account, click sign up to be brought to the signup page.
