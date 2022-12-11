@@ -99,3 +99,4 @@ Tengfei Louie
 Everyone worked on writing each milestone and creating the video demo.
 
 ### Conclusion
+Through this project, our team had the opportunity to experience the entire software development process, from the initial design of the web application through the actual implementation to the final deployment of the application.  Setting up and connecting MongoDB to Heroku was initially challenging for our team. Our team had difficulty getting the server started and using express routing to make requests. Our team would have liked to know how to set up the API endpoints using express before starting the project since that’s the part our team spends the most time working on. Some technical hurdles our team has encountered are sometimes our app hosted on Heroku not working correctly.
