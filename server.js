@@ -21,7 +21,8 @@ app.use('/', express.static('public/html'));
 const mc = new MiniCrypt();
 
 //SHOULD UNCOMMENT IN MAIN WHICH IS DEPLOYED TO HEROKU
-const uri = process.env.MONGODB_URI;
+const uri = "mongodb+srv://team:FOQvCBE0VEC81Fbv@zayin-east.79pggjl.mongodb.net/zayin-db?retryWrites=true&w=majority"; 
+//const uri = process.env.MONGODB_URI;
 
 let database = "";
 let collection = "";
@@ -153,18 +154,22 @@ app.post('/login/curruser', async function (req,res){
   curr_user = req.body.username;
   const pw = req.body.pw;
   const user = await collection.find({"username": `${curr_user}`}).toArray();
+  console.log("printing user");
   console.log(user);
-  if (user.length === 0) {
-    res.json({"valid" : "false"});
-  }
-  const password_hash = user[0].password_hash;
-  const salt = user[0].salt;
 
-  if (!mc.check(pw, salt, password_hash)) {
+  if (user === [] || user.length === 0 || user === null) {
     res.json({"valid" : "false"});
   }
   else {
-    res.json({"valid" : "true"});
+    const password_hash = user[0].password_hash;
+    const salt = user[0].salt;
+
+    if (!mc.check(pw, salt, password_hash)) {
+      res.json({"valid" : "false"});
+    }
+    else {
+      res.json({"valid" : "true"});
+    }
   }
 });
 
